@@ -102,10 +102,11 @@
 #define INTERRUPT_HANDLER j other_exception /* No interrupts should occur */
 
 #define RVTEST_CODE_BEGIN                                               \
-        .org 0x601, 0x00;                                               \
+        .org 0x01, 0x00;                                                \
         MSG_TRAP:                                                       \
         .string "BP";                                                   \
         .section .text.init;                                            \
+        .org 0x740, 0x00;                                               \
         .balign  64;                                                    \
         .weak stvec_handler;                                            \
         .weak mtvec_handler;                                            \
